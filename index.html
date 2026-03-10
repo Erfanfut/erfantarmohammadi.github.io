@@ -6,220 +6,231 @@
 <title>Erfan Tarmohammadi - Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    html { scroll-behavior: smooth; }
-    body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        color: #f5f5f5;
-        background-color: #121212;
-        line-height: 1.6;
-    }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    color: #2c3e50;
+    background-color: #fcfcfc;
+    line-height: 1.6;
+}
 
-    /* NAVBAR */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(18,18,18,0.95);
-        backdrop-filter: blur(10px);
-        padding: 18px 0;
-        display: flex;
-        justify-content: center;
-        z-index: 1000;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.5);
-    }
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    padding: 18px 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+.nav-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #1a252f;
+    text-decoration: none;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 30px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover { color: #3498db; }
 
-    .nav-container {
-        width: 80%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    padding: 0 20px;
+}
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    background-color: #ddd;
+}
+.hero h1 { font-size: 52px; margin: 0 0 15px 0; color: #1a252f; letter-spacing: -0.5px; }
+.hero p { font-size: 20px; max-width: 650px; color: #555; margin: 0; }
 
-    .logo {
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: #3498db;
-        text-decoration: none;
-    }
+/* SECTIONS */
+section { padding: 100px 10%; }
+.section-title {
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #1a252f;
+    text-align: center;
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background: #3498db;
+    display: block;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+.about-text { max-width: 800px; margin: 0 auto; text-align: left; font-size: 18px; color: #444; }
 
-    .nav-links a {
-        text-decoration: none;
-        color: #f5f5f5;
-        margin-left: 30px;
-        font-weight: 500;
-        transition: color 0.3s ease;
-    }
+/* GRID CARDS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #3498db;
+}
+.card h3 { margin-top: 0; font-size: 22px; color: #2c3e50; }
+.card p { color: #666; font-size: 15px; margin-bottom: 0; }
 
-    .nav-links a:hover { color: #3498db; }
+/* SKILLS */
+.skills-list { list-style-type: none; padding: 0; text-align: left; max-width: 800px; margin: 0 auto; }
+.skills-list li {
+    background: #f4f6fa;
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #34495e;
+    font-weight: 500;
+}
 
-    /* HERO */
-    .hero {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
-        padding: 0 20px;
-    }
+/* CONTACT */
+.contact { text-align: left; background-color: #fff; max-width: 800px; margin: 0 auto; }
+.contact p { font-size: 18px; margin: 10px 0; }
+.contact a { color: #3498db; text-decoration: none; font-weight: 600; }
 
-    .profile-photo {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #3498db;
-        box-shadow: 0 0 25px rgba(52,152,219,0.5);
-        margin-bottom: 25px;
-        background-color: #333;
-    }
-
-    .hero h1 { font-size: 52px; margin: 0 0 15px 0; color: #f5f5f5; letter-spacing: -0.5px; }
-    .hero p { font-size: 20px; max-width: 650px; color: #ccc; margin: 0; }
-
-    /* SECTIONS */
-    section { padding: 100px 10%; }
-    .section-title {
-        font-size: 36px;
-        margin-bottom: 50px;
-        color: #f5f5f5;
-        text-align: center;
-        position: relative;
-    }
-    .section-title::after {
-        content: '';
-        width: 60px;
-        height: 3px;
-        background: #3498db;
-        display: block;
-        margin: 15px auto 0;
-        border-radius: 2px;
-    }
-
-    /* ABOUT */
-    .about-text { max-width: 800px; margin: 0 auto; text-align: center; font-size: 18px; color: #ccc; }
-
-    .skills-list { list-style-type: none; padding: 0; text-align: center; margin-top: 25px; }
-    .skills-list li {
-        background: #1e1e1e;
-        display: inline-block;
-        padding: 8px 15px;
-        margin: 5px;
-        border-radius: 20px;
-        font-size: 14px;
-        color: #3498db;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-    .skills-list li:hover {
-        background: #3498db;
-        color: #121212;
-        transform: scale(1.05);
-    }
-
-    /* RESEARCH */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .card {
-        background: #1e1e1e;
-        padding: 35px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border-top: 4px solid transparent;
-        transition: all 0.3s ease;
-    }
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(52,152,219,0.6);
-        border-top: 4px solid #3498db;
-    }
-    .card h3 { margin-top: 0; font-size: 22px; color: #f5f5f5; }
-    .card p { color: #ccc; font-size: 15px; margin-bottom: 0; }
-
-    /* CONTACT */
-    .contact { text-align: center; }
-    .contact p { font-size: 18px; margin: 10px 0; color: #ccc; }
-    .contact a { color: #3498db; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
-    .contact a:hover { color: #1abc9c; }
-
-    footer { text-align: center; padding: 40px; background: #1a1a1a; color: #ccc; font-size: 14px; }
+footer { text-align: center; padding: 40px; background: #1a252f; color: #ecf0f1; font-size: 14px; }
 
 </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Erfan Tarmohammadi</a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#contact">Contact</a>
-            </div>
+<!-- NAVBAR -->
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">Erfan Tarmohammadi</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#contact">Contact</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <img src="profilephoto.png" alt="Erfan Tarmohammadi" class="profile-photo">
-        <h1>Erfan Tarmohammadi</h1>
-        <p>MSc in Data Science at Sabanci University. Researching Empirical Finance & AI, focusing on LLMs and M&A.</p>
-    </section>
+<!-- HERO -->
+<section class="hero">
+    <img src="your-photo-url.jpg" alt="Erfan Tarmohammadi" class="profile-photo">
+    <h1>Erfan Tarmohammadi</h1>
+    <p>MSc in Data Science at Sabanci University. Researching empirical finance and AI, focusing on LLMs and Mergers & Acquisitions.</p>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <p class="about-text">
-            MSc student in Data Science with a BSc in Industrial Engineering. Interested in applying AI and NLP to financial data, asset pricing, and M&A research. Teaching Assistant at Sabancı University, mentoring students in Python, ML, and data science projects.
-        </p>
-        <ul class="skills-list">
-            <li>Python</li>
-            <li>Machine Learning & NLP</li>
-            <li>PyTorch & TensorFlow</li>
-            <li>HuggingFace Transformers</li>
-            <li>Pandas & NumPy</li>
-            <li>XGBoost & LightGBM</li>
-        </ul>
-    </section>
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p class="about-text">
+        Empirical finance and artificial intelligence, with a focus on applying data-driven and AI-based methodologies to
+        large-scale financial datasets. Specific interests include empirical asset pricing, mergers and acquisitions, financial
+        information extraction, and applications of NLP and LLMs in financial data science. I also serve as a Teaching Assistant
+        at Sabancı University, mentoring students in Python, ML, and data science projects.
+    </p>
+</section>
 
-    <!-- RESEARCH -->
-    <section id="research">
-        <h2 class="section-title">Research Focus</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Master's Thesis</h3>
-                <p>LLM-driven extraction and financial application of M&A events from EDGAR documents.</p>
-            </div>
-            <div class="card">
-                <h3>Financial Information Extraction</h3>
-                <p>Applying advanced NLP to extract structured data from large-scale financial documents.</p>
-            </div>
-            <div class="card">
-                <h3>Empirical Asset Pricing</h3>
-                <p>Data-driven methodologies to understand and predict asset behaviors in financial markets.</p>
-            </div>
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <ul class="skills-list">
+        <li>Python</li>
+        <li>PyTorch & TensorFlow</li>
+        <li>HuggingFace Transformers</li>
+        <li>XGBoost & LightGBM</li>
+        <li>Pandas & NumPy</li>
+        <li>NLP & MLOps</li>
+    </ul>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>LLM Benchmarking for Financial Sentiment</h3>
+            <p>Benchmarked instruction-tuned LLMs on Financial PhraseBank and Indian Financial News, extracting structured sentiment and reasoning.</p>
         </div>
-    </section>
+        <div class="card">
+            <h3>Algorithmic Trading & Backtesting</h3>
+            <p>Developed LSTM-based models predicting BTC-USDT returns and backtested multiple trading strategies on historical data.</p>
+        </div>
+        <div class="card">
+            <h3>AI & Data Mining in M&A Review</h3>
+            <p>Systematically reviewed 50 AI & data mining papers in M&A, synthesizing methods, datasets, and research gaps into a taxonomy.</p>
+        </div>
+    </div>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <p>Email: <a href="mailto:erfan.tarmohammadi@sabanciuniv.edu">erfan.tarmohammadi@sabanciuniv.edu</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/erfan-tarmohammadi" target="_blank">in/erfan-tarmohammadi</a></p>
-        <p>GitHub: <a href="https://github.com/erfanfut" target="_blank">github.com/erfanfut</a></p>
-    </section>
+<!-- EXPERIENCES -->
+<section id="experiences">
+    <h2 class="section-title">Experiences</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Teaching Assistant - Sabanci University</h3>
+            <p>Guided students in Python coding, machine learning modeling, and data science projects.</p>
+        </div>
+        <div class="card">
+            <h3>Research Assistant</h3>
+            <p>Conducted research on applying LLMs for financial document analysis and M&A information extraction.</p>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        © 2026 Erfan Tarmohammadi. All rights reserved.
-    </footer>
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>Email: <a href="mailto:erfan.tarmohammadi@sabanciuniv.edu">erfan.tarmohammadi@sabanciuniv.edu</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/erfan-tarmohammadi" target="_blank">in/erfan-tarmohammadi</a></p>
+    <p>GitHub: <a href="https://github.com/erfanfut" target="_blank">github.com/erfanfut</a></p>
+</section>
+
+<footer>
+    © 2026 Erfan Tarmohammadi. All rights reserved.
+</footer>
+
 </body>
 </html>
