@@ -10,20 +10,43 @@ html { scroll-behavior: smooth; }
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    color: #2c3e50;
-    background-color: #fcfcfc;
     line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* LIGHT THEME */
+body.light { background-color: #fcfcfc; color: #2c3e50; }
+body.light a { color: #3498db; }
+body.light nav { background: rgba(255, 255, 255, 0.95); color: #2c3e50; }
+
+/* DARK THEME */
+body.dark { background-color: #1a1a1a; color: #f0f0f0; }
+body.dark a { color: #5dade2; }
+body.dark nav { background: rgba(30, 30, 30, 0.95); color: #f0f0f0; }
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1100;
+    font-weight: 500;
 }
 
 /* NAVBAR */
 nav {
     position: fixed;
-    top: 0;
+    top: 60px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    padding: 18px 0;
+    padding: 15px 0;
     display: flex;
     justify-content: center;
     z-index: 1000;
@@ -34,24 +57,31 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
-.logo {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #1a252f;
-    text-decoration: none;
-}
-.nav-links a {
-    text-decoration: none;
-    color: #555;
-    margin-left: 30px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
+.logo { font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+.nav-links a { text-decoration: none; margin-left: 30px; font-weight: 500; transition: color 0.3s ease; }
 .nav-links a:hover { color: #3498db; }
+
+/* TOP LINKS (CV / LinkedIn) */
+.top-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 0;
+    background: #3498db;
+}
+.top-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+.top-links a:hover { background: #2c80b3; }
 
 /* HERO */
 .hero {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,18 +100,12 @@ nav {
     margin-bottom: 25px;
     background-color: #ddd;
 }
-.hero h1 { font-size: 52px; margin: 0 0 15px 0; color: #1a252f; letter-spacing: -0.5px; }
-.hero p { font-size: 20px; max-width: 650px; color: #555; margin: 0; }
+.hero h1 { font-size: 52px; margin: 0 0 15px 0; letter-spacing: -0.5px; }
+.hero p { font-size: 20px; max-width: 650px; margin: 0; }
 
 /* SECTIONS */
 section { padding: 100px 10%; }
-.section-title {
-    font-size: 36px;
-    margin-bottom: 50px;
-    color: #1a252f;
-    text-align: center;
-    position: relative;
-}
+.section-title { font-size: 36px; margin-bottom: 50px; text-align: center; position: relative; }
 .section-title::after {
     content: '';
     width: 60px;
@@ -91,31 +115,14 @@ section { padding: 100px 10%; }
     margin: 15px auto 0;
     border-radius: 2px;
 }
-.about-text { max-width: 800px; margin: 0 auto; text-align: left; font-size: 18px; color: #444; }
+.about-text { max-width: 800px; margin: 0 auto; text-align: left; font-size: 18px; }
 
 /* GRID CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.card {
-    background: white;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-    border-top: 4px solid transparent;
-    transition: all 0.3s ease;
-}
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    border-top: 4px solid #3498db;
-}
-.card h3 { margin-top: 0; font-size: 22px; color: #2c3e50; }
-.card p { color: #666; font-size: 15px; margin-bottom: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+.card { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); border-top: 4px solid transparent; transition: all 0.3s ease; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); border-top: 4px solid #3498db; }
+.card h3 { margin-top: 0; font-size: 22px; }
+.card p { font-size: 15px; margin-bottom: 0; }
 
 /* SKILLS */
 .skills-list { list-style-type: none; padding: 0; text-align: left; max-width: 800px; margin: 0 auto; }
@@ -126,30 +133,38 @@ section { padding: 100px 10%; }
     margin: 5px;
     border-radius: 20px;
     font-size: 14px;
-    color: #34495e;
     font-weight: 500;
 }
 
 /* CONTACT */
-.contact { text-align: left; background-color: #fff; max-width: 800px; margin: 0 auto; }
+.contact { text-align: left; max-width: 800px; margin: 0 auto; }
 .contact p { font-size: 18px; margin: 10px 0; }
-.contact a { color: #3498db; text-decoration: none; font-weight: 600; }
+.contact a { text-decoration: none; font-weight: 600; }
 
+/* FOOTER */
 footer { text-align: center; padding: 40px; background: #1a252f; color: #ecf0f1; font-size: 14px; }
 
 </style>
 </head>
 
-<body>
+<body class="light">
+
+<!-- TOP LINKS -->
+<div class="top-links">
+    <a href="ERFAN_CV.pdf" target="_blank">Download CV</a>
+    <a href="https://linkedin.com/in/erfan-tarmohammadi" target="_blank">LinkedIn</a>
+</div>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light</button>
+
 <!-- NAVBAR -->
 <nav>
     <div class="nav-container">
         <a href="#" class="logo">Erfan Tarmohammadi</a>
         <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experiences">Experiences</a>
+            <a href="#research">Research Interests</a>
+            <a href="#skills">Strengths and Goals</a>
             <a href="#contact">Contact</a>
         </div>
     </div>
@@ -159,63 +174,35 @@ footer { text-align: center; padding: 40px; background: #1a252f; color: #ecf0f1;
 <section class="hero">
     <img src="profilephoto.png" alt="Erfan Tarmohammadi" class="profile-photo">
     <h1>Erfan Tarmohammadi</h1>
-    <p>MSc in Data Science at Sabanci University. Researching empirical finance and AI, focusing on LLMs and Mergers & Acquisitions.</p>
+    <p>MSc in Data Science at <a href="https://www.sabanciuniv.edu/en" target="_blank">Sabancı University</a> | BSc in Industrial Engineering</p>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-    <h2 class="section-title">About Me</h2>
+<!-- RESEARCH INTERESTS -->
+<section id="research">
+    <h2 class="section-title">Research Interests</h2>
     <p class="about-text">
         Empirical finance and artificial intelligence, with a focus on applying data-driven and AI-based methodologies to
         large-scale financial datasets. Specific interests include empirical asset pricing, mergers and acquisitions, financial
-        information extraction, and applications of NLP and LLMs in financial data science. I also serve as a Teaching Assistant
-        at Sabancı University, mentoring students in Python, ML, and data science projects.
+        information extraction, and applications of NLP and LLMs in financial data science. Currently conducting research at 
+        <a href="https://vrllab.sabanciuniv.edu" target="_blank">VRL Lab</a>.
     </p>
 </section>
 
-<!-- SKILLS -->
+<!-- STRENGTHS AND GOALS -->
 <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <ul class="skills-list">
-        <li>Python</li>
-        <li>PyTorch & TensorFlow</li>
-        <li>HuggingFace Transformers</li>
-        <li>XGBoost & LightGBM</li>
-        <li>Pandas & NumPy</li>
-        <li>NLP & MLOps</li>
-    </ul>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-    <h2 class="section-title">Projects</h2>
+    <h2 class="section-title">Strengths and Goals</h2>
     <div class="grid">
         <div class="card">
-            <h3>LLM Benchmarking for Financial Sentiment</h3>
-            <p>Benchmarked instruction-tuned LLMs on Financial PhraseBank and Indian Financial News, extracting structured sentiment and reasoning.</p>
+            <h3>Quantitative Background</h3>
+            <p>Strong mathematical and statistical foundation for AI-driven empirical finance and modeling.</p>
         </div>
         <div class="card">
-            <h3>Algorithmic Trading & Backtesting</h3>
-            <p>Developed LSTM-based models predicting BTC-USDT returns and backtested multiple trading strategies on historical data.</p>
+            <h3>Interdisciplinary Knowledge</h3>
+            <p>Passionate about finance, AI, statistics, math, and behavioral economics, combining these for impactful research.</p>
         </div>
         <div class="card">
-            <h3>AI & Data Mining in M&A Review</h3>
-            <p>Systematically reviewed 50 AI & data mining papers in M&A, synthesizing methods, datasets, and research gaps into a taxonomy.</p>
-        </div>
-    </div>
-</section>
-
-<!-- EXPERIENCES -->
-<section id="experiences">
-    <h2 class="section-title">Experiences</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Teaching Assistant - Sabanci University</h3>
-            <p>Guided students in Python coding, machine learning modeling, and data science projects.</p>
-        </div>
-        <div class="card">
-            <h3>Research Assistant</h3>
-            <p>Conducted research on applying LLMs for financial document analysis and M&A information extraction.</p>
+            <h3>Curiosity and Ambition</h3>
+            <p>Driven to push frontiers of knowledge and solve complex financial challenges with AI and data science.</p>
         </div>
     </div>
 </section>
@@ -231,6 +218,13 @@ footer { text-align: center; padding: 40px; background: #1a252f; color: #ecf0f1;
 <footer>
     © 2026 Erfan Tarmohammadi. All rights reserved.
 </footer>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+}
+</script>
 
 </body>
 </html>
