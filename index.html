@@ -10,8 +10,8 @@
     body {
         font-family: 'Inter', sans-serif;
         margin: 0;
-        color: #2c3e50;
-        background-color: #fcfcfc;
+        color: #f5f5f5;
+        background-color: #121212;
         line-height: 1.6;
     }
 
@@ -20,13 +20,13 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(18,18,18,0.95);
         backdrop-filter: blur(10px);
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
         padding: 18px 0;
         display: flex;
         justify-content: center;
         z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.5);
     }
 
     .nav-container {
@@ -39,13 +39,13 @@
     .logo {
         font-weight: 700;
         font-size: 1.2rem;
-        color: #1a252f;
+        color: #3498db;
         text-decoration: none;
     }
 
     .nav-links a {
         text-decoration: none;
-        color: #555;
+        color: #f5f5f5;
         margin-left: 30px;
         font-weight: 500;
         transition: color 0.3s ease;
@@ -61,7 +61,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        background: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
         padding: 0 20px;
     }
 
@@ -70,21 +70,21 @@
         height: 160px;
         border-radius: 50%;
         object-fit: cover;
-        border: 4px solid #fff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border: 4px solid #3498db;
+        box-shadow: 0 0 25px rgba(52,152,219,0.5);
         margin-bottom: 25px;
-        background-color: #ddd;
+        background-color: #333;
     }
 
-    .hero h1 { font-size: 52px; margin: 0 0 15px 0; color: #1a252f; letter-spacing: -0.5px; }
-    .hero p { font-size: 20px; max-width: 650px; color: #555; margin: 0; }
+    .hero h1 { font-size: 52px; margin: 0 0 15px 0; color: #f5f5f5; letter-spacing: -0.5px; }
+    .hero p { font-size: 20px; max-width: 650px; color: #ccc; margin: 0; }
 
     /* SECTIONS */
     section { padding: 100px 10%; }
     .section-title {
         font-size: 36px;
         margin-bottom: 50px;
-        color: #1a252f;
+        color: #f5f5f5;
         text-align: center;
         position: relative;
     }
@@ -97,9 +97,29 @@
         margin: 15px auto 0;
         border-radius: 2px;
     }
-    .about-text { max-width: 800px; margin: 0 auto; text-align: center; font-size: 18px; color: #444; }
 
-    /* GRID CARDS */
+    /* ABOUT */
+    .about-text { max-width: 800px; margin: 0 auto; text-align: center; font-size: 18px; color: #ccc; }
+
+    .skills-list { list-style-type: none; padding: 0; text-align: center; margin-top: 25px; }
+    .skills-list li {
+        background: #1e1e1e;
+        display: inline-block;
+        padding: 8px 15px;
+        margin: 5px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: #3498db;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .skills-list li:hover {
+        background: #3498db;
+        color: #121212;
+        transform: scale(1.05);
+    }
+
+    /* RESEARCH */
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -109,39 +129,29 @@
     }
 
     .card {
-        background: white;
+        background: #1e1e1e;
         padding: 35px;
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         border-top: 4px solid transparent;
         transition: all 0.3s ease;
     }
     .card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 15px 35px rgba(52,152,219,0.6);
         border-top: 4px solid #3498db;
     }
-    .card h3 { margin-top: 0; font-size: 22px; color: #2c3e50; }
-    .card p { color: #666; font-size: 15px; margin-bottom: 0; }
-
-    .skills-list { list-style-type: none; padding: 0; text-align: center; }
-    .skills-list li {
-        background: #f4f6fa;
-        display: inline-block;
-        padding: 8px 15px;
-        margin: 5px;
-        border-radius: 20px;
-        font-size: 14px;
-        color: #34495e;
-        font-weight: 500;
-    }
+    .card h3 { margin-top: 0; font-size: 22px; color: #f5f5f5; }
+    .card p { color: #ccc; font-size: 15px; margin-bottom: 0; }
 
     /* CONTACT */
-    .contact { text-align: center; background-color: #fff; }
-    .contact p { font-size: 18px; margin: 10px 0; }
-    .contact a { color: #3498db; text-decoration: none; font-weight: 600; }
+    .contact { text-align: center; }
+    .contact p { font-size: 18px; margin: 10px 0; color: #ccc; }
+    .contact a { color: #3498db; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+    .contact a:hover { color: #1abc9c; }
 
-    footer { text-align: center; padding: 40px; background: #1a252f; color: #ecf0f1; font-size: 14px; }
+    footer { text-align: center; padding: 40px; background: #1a1a1a; color: #ccc; font-size: 14px; }
+
 </style>
 </head>
 
@@ -153,7 +163,6 @@
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#research">Research</a>
-                <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
@@ -163,27 +172,27 @@
     <section class="hero">
         <img src="profilephoto.png" alt="Erfan Tarmohammadi" class="profile-photo">
         <h1>Erfan Tarmohammadi</h1>
-        <p>MSc in Data Science at Sabanci University. Researching Empirical Finance and AI, focusing on LLMs & Mergers & Acquisitions.</p>
+        <p>MSc in Data Science at Sabanci University. Researching Empirical Finance & AI, focusing on LLMs and M&A.</p>
     </section>
 
     <!-- ABOUT -->
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <p class="about-text">
-            Data Science MSc student with a BSc in Industrial Engineering. Interested in applying AI and NLP to financial data, asset pricing, and M&A research. Teaching Assistant at Sabancı University, mentoring students in Python, ML, and data science projects.
+            MSc student in Data Science with a BSc in Industrial Engineering. Interested in applying AI and NLP to financial data, asset pricing, and M&A research. Teaching Assistant at Sabancı University, mentoring students in Python, ML, and data science projects.
         </p>
         <ul class="skills-list">
             <li>Python</li>
+            <li>Machine Learning & NLP</li>
             <li>PyTorch & TensorFlow</li>
             <li>HuggingFace Transformers</li>
-            <li>XGBoost & LightGBM</li>
             <li>Pandas & NumPy</li>
-            <li>NLP & MLOps</li>
+            <li>XGBoost & LightGBM</li>
         </ul>
     </section>
 
     <!-- RESEARCH -->
-    <section id="research" style="background-color: #f9fbfd;">
+    <section id="research">
         <h2 class="section-title">Research Focus</h2>
         <div class="grid">
             <div class="card">
@@ -197,25 +206,6 @@
             <div class="card">
                 <h3>Empirical Asset Pricing</h3>
                 <p>Data-driven methodologies to understand and predict asset behaviors in financial markets.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-        <h2 class="section-title">Selected Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>LLM Benchmarking</h3>
-                <p>Benchmarked instruction-tuned LLMs on financial news and reports using structured prompting and Pydantic for sentiment extraction.</p>
-            </div>
-            <div class="card">
-                <h3>Algorithmic Trading & Backtesting</h3>
-                <p>LSTM-based models predicting BTC-USDT returns, with a backtesting framework for evaluating multiple trading strategies.</p>
-            </div>
-            <div class="card">
-                <h3>AI & Data Mining in M&A Review</h3>
-                <p>Systematic review of 50 AI & data mining papers in M&A, synthesizing methods, datasets, and research gaps into a taxonomy.</p>
             </div>
         </div>
     </section>
