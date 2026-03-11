@@ -1,229 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Erfan Tarmohammadi - Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Erfan Tarmohammadi – Portfolio</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
-html { scroll-behavior: smooth; }
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    line-height: 1.6;
-    transition: background 0.3s ease, color 0.3s ease;
+:root{
+  --bg: #fcfcfc;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #2b95d6;
+  --card: #ffffff;
+  --glass: rgba(255,255,255,0.6);
+
+  --bg-dark: #0f1115;
+  --text-dark: #e6eef6;
+  --muted-dark: #9aa7b9;
+  --accent-dark: #5dade2;
+  --card-dark: #0f1720;
+  --glass-dark: rgba(255,255,255,0.03);
 }
 
-/* LIGHT THEME */
-body.light { background-color: #fcfcfc; color: #2c3e50; }
-body.light a { color: #3498db; }
-body.light nav { background: rgba(255, 255, 255, 0.95); color: #2c3e50; }
-
-/* DARK THEME */
-body.dark { background-color: #1a1a1a; color: #f0f0f0; }
-body.dark a { color: #5dade2; }
-body.dark nav { background: rgba(30, 30, 30, 0.95); color: #f0f0f0; }
-
-/* THEME TOGGLE BUTTON */
-.theme-toggle {
-    position: fixed;
-    top: 18px;
-    right: 20px;
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    z-index: 1100;
-    font-weight: 500;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition:background .35s ease, color .35s ease;
+  line-height:1.5;
+  font-size:16px;
+  -webkit-tap-highlight-color: transparent;
 }
+
+/* THEME (applied with body[data-theme="dark"]) */
+body[data-theme="dark"]{
+  background:var(--bg-dark);
+  color:var(--text-dark);
+}
+
+/* Container */
+.container{max-width:1150px;margin:0 auto;padding:0 24px;}
+
+/* Top utility bar */
+.top-links{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding:12px;
+  background:linear-gradient(90deg,var(--accent), #3aa0d8);
+  position:relative;
+  z-index:1200;
+}
+.top-links a{
+  color:#fff;text-decoration:none;font-weight:600;padding:8px 14px;border-radius:10px;
+  box-shadow:0 6px 18px rgba(43,149,214,0.12);transition:transform .18s ease, box-shadow .18s ease;
+}
+.top-links a:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(43,149,214,0.18)}
 
 /* NAVBAR */
-nav {
-    position: fixed;
-    top: 60px;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    padding: 15px 0;
-    display: flex;
-    justify-content: center;
-    z-index: 1000;
+nav{
+  position:sticky; top:0; display:flex; align-items:center; justify-content:center;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.30));
+  border-bottom:1px solid rgba(0,0,0,0.04);
+  z-index:1100; transition:background .25s ease, border-color .25s ease;
 }
-.nav-container {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+body[data-theme="dark"] nav{
+  background: linear-gradient(180deg, rgba(10,12,14,0.6), rgba(10,12,14,0.3));
+  border-bottom:1px solid rgba(255,255,255,0.03);
 }
-.logo { font-weight: 700; font-size: 1.2rem; text-decoration: none; }
-.nav-links a { text-decoration: none; margin-left: 30px; font-weight: 500; transition: color 0.3s ease; }
-.nav-links a:hover { color: #3498db; }
-
-/* TOP LINKS (CV / LinkedIn) */
-.top-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px 0;
-    background: #3498db;
+.nav-inner{width:100%;max-width:1150px;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:"Playfair Display",serif;font-weight:700;font-size:1.1rem;color:inherit;text-decoration:none}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px;transition:color .18s ease,background .18s ease}
+.nav-links a:hover{color:var(--accent)}
+.theme-toggle{
+  background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:600;
 }
-.top-links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 15px;
-    border-radius: 6px;
-    transition: background 0.3s ease;
-}
-.top-links a:hover { background: #2c80b3; }
+body[data-theme="dark"] .theme-toggle{border:1px solid rgba(255,255,255,0.06)}
 
 /* HERO */
-.hero {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-    padding: 0 20px;
+.hero{
+  min-height:78vh;display:flex;align-items:center;justify-content:center;padding:48px 24px;
+  background:
+    radial-gradient(800px 400px at 10% 20%, rgba(43,149,214,0.06), transparent 8%),
+    linear-gradient(135deg, rgba(243,244,246,1), rgba(250,251,252,0));
 }
-.profile-photo {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    margin-bottom: 25px;
-    background-color: #ddd;
+body[data-theme="dark"] .hero{
+  background:
+    radial-gradient(900px 420px at 10% 20%, rgba(93,150,190,0.06), transparent 8%),
+    linear-gradient(180deg, rgba(10,12,14,0.45), rgba(10,12,14,0.02));
 }
-.hero h1 { font-size: 52px; margin: 0 0 15px 0; letter-spacing: -0.5px; }
-.hero p { font-size: 20px; max-width: 650px; margin: 0; }
+.hero-grid{
+  display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:center;width:100%;max-width:1100px;
+}
 
-/* SECTIONS */
-section { padding: 100px 10%; }
-.section-title { font-size: 36px; margin-bottom: 50px; text-align: center; position: relative; }
-.section-title::after {
-    content: '';
-    width: 60px;
-    height: 3px;
-    background: #3498db;
-    display: block;
-    margin: 15px auto 0;
-    border-radius: 2px;
+/* profile */
+.profile-photo{
+  width:220px;height:220px;border-radius:16px;object-fit:cover;border:6px solid rgba(255,255,255,0.9);
+  box-shadow: 0 20px 50px rgba(15,23,42,0.12);background:#eee;
+  transition:transform .45s cubic-bezier(.2,.9,.2,1);
 }
-.about-text { max-width: 800px; margin: 0 auto; text-align: left; font-size: 18px; }
+.profile-wrap{display:flex;align-items:center;justify-content:center}
+.hero-card{
+  padding:28px;border-radius:14px;background:var(--card);box-shadow:0 20px 60px rgba(2,6,23,0.06);
+  border:1px solid rgba(0,0,0,0.04);
+}
+body[data-theme="dark"] .hero-card{
+  background:var(--card-dark);border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(2,6,23,0.5);
+}
+.name{
+  font-family:"Playfair Display",serif;font-weight:700;font-size:38px;margin:0 0 6px;
+  letter-spacing:-0.6px;
+}
+.role{margin:0;color:var(--muted);font-weight:600}
+
+/* CTA buttons */
+.cta-bar{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none;
+  transition:transform .15s ease, box-shadow .15s ease;
+  box-shadow:0 8px 26px rgba(43,149,214,0.08);
+  background:linear-gradient(90deg,var(--accent), #3aa0d8);color:#fff;border:none;
+}
+.btn.secondary{
+  background:transparent;color:var(--accent);border:1px solid rgba(43,149,214,0.12);box-shadow:none;
+}
+.btn:hover{transform:translateY(-4px)}
+
+/* sections */
+section{padding:84px 0}
+.section-title{font-family:"Playfair Display",serif;font-size:30px;margin:0 0 18px;text-align:center}
+.section-sub{max-width:860px;margin:0 auto;color:var(--muted);text-align:center}
 
 /* GRID CARDS */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-.card { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); border-top: 4px solid transparent; transition: all 0.3s ease; }
-.card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); border-top: 4px solid #3498db; }
-.card h3 { margin-top: 0; font-size: 22px; }
-.card p { font-size: 15px; margin-bottom: 0; }
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:30px}
+.card{padding:26px;border-radius:12px;background:var(--card);border:1px solid rgba(0,0,0,0.04);box-shadow:0 10px 40px rgba(2,6,23,0.04)}
+body[data-theme="dark"] .card{background:var(--card-dark);border:1px solid rgba(255,255,255,0.03)}
+.card h3{margin:0 0 10px;font-size:18px}
+.card p{margin:0;color:var(--muted)}
 
-/* SKILLS */
-.skills-list { list-style-type: none; padding: 0; text-align: left; max-width: 800px; margin: 0 auto; }
-.skills-list li {
-    background: #f4f6fa;
-    display: inline-block;
-    padding: 8px 15px;
-    margin: 5px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
+/* skills chips */
+.skills-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:0;margin:18px 0 0}
+.skills-list li{list-style:none;background:linear-gradient(180deg, rgba(243,244,246,1), rgba(251,252,253,1));padding:10px 14px;border-radius:999px;font-weight:600;color:var(--text);box-shadow:0 6px 18px rgba(2,6,23,0.03)}
+body[data-theme="dark"] .skills-list li{background:linear-gradient(180deg, rgba(22,26,30,1), rgba(13,16,20,1));color:var(--text-dark);box-shadow:0 6px 18px rgba(0,0,0,0.35)}
+
+/* contact */
+.contact a{color:var(--accent);font-weight:700;text-decoration:none}
+
+/* footer */
+footer{padding:36px 0;text-align:center;color:var(--muted);background:transparent;border-top:1px solid rgba(0,0,0,0.04)}
+body[data-theme="dark"] footer{border-top:1px solid rgba(255,255,255,0.03)}
+
+/* Responsive */
+@media (max-width:880px){
+  .hero-grid{grid-template-columns:1fr;gap:20px}
+  .profile-photo{width:160px;height:160px;border-radius:14px}
+  .name{font-size:28px}
+  nav{padding:6px 0}
+  .nav-links{display:none}
 }
-
-/* CONTACT */
-.contact { text-align: left; max-width: 800px; margin: 0 auto; }
-.contact p { font-size: 18px; margin: 10px 0; }
-.contact a { text-decoration: none; font-weight: 600; }
-
-/* FOOTER */
-footer { text-align: center; padding: 40px; background: #1a252f; color: #ecf0f1; font-size: 14px; }
-
 </style>
 </head>
-
-<body class="light">
+<body data-theme="light">
 
 <!-- TOP LINKS -->
 <div class="top-links">
-    <a href="ERFAN_CV.pdf" target="_blank">Download CV</a>
-    <a href="https://linkedin.com/in/erfan-tarmohammadi" target="_blank">LinkedIn</a>
+  <a href="ERFAN_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+  <a href="https://linkedin.com/in/erfan-tarmohammadi" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="https://github.com/erfanfut" target="_blank" rel="noopener">GitHub</a>
 </div>
 
-<!-- THEME TOGGLE -->
-<button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light</button>
-
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
-    <div class="nav-container">
-        <a href="#" class="logo">Erfan Tarmohammadi</a>
-        <div class="nav-links">
-            <a href="#research">Research Interests</a>
-            <a href="#skills">Strengths and Goals</a>
-            <a href="#contact">Contact</a>
-        </div>
+  <div class="nav-inner container">
+    <a class="logo" href="#">Erfan Tarmohammadi</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#skills">Strengths</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Toggle</button>
     </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-    <img src="profilephoto.png" alt="Erfan Tarmohammadi" class="profile-photo">
-    <h1>Erfan Tarmohammadi</h1>
-    <p>MSc in Data Science at <a href="https://www.sabanciuniv.edu/en" target="_blank">Sabancı University</a> | BSc in Industrial Engineering</p>
-</section>
-
-<!-- RESEARCH INTERESTS -->
-<section id="research">
-    <h2 class="section-title">Research Interests</h2>
-    <p class="about-text">
-        Empirical finance and artificial intelligence, with a focus on applying data-driven and AI-based methodologies to
-        large-scale financial datasets. Specific interests include empirical asset pricing, mergers and acquisitions, financial
-        information extraction, and applications of NLP and LLMs in financial data science. Currently conducting research at 
-        <a href="https://vrllab.sabanciuniv.edu" target="_blank">VRL Lab</a>.
-    </p>
-</section>
-
-<!-- STRENGTHS AND GOALS -->
-<section id="skills">
-    <h2 class="section-title">Strengths and Goals</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Quantitative Background</h3>
-            <p>Strong mathematical and statistical foundation for AI-driven empirical finance and modeling.</p>
-        </div>
-        <div class="card">
-            <h3>Interdisciplinary Knowledge</h3>
-            <p>Passionate about finance, AI, statistics, math, and behavioral economics, combining these for impactful research.</p>
-        </div>
-        <div class="card">
-            <h3>Curiosity and Ambition</h3>
-            <p>Driven to push frontiers of knowledge and solve complex financial challenges with AI and data science.</p>
-        </div>
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="profile-wrap">
+      <img class="profile-photo" src="profilephoto.png" alt="Erfan Tarmohammadi photo">
     </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact">
+    <div class="hero-card">
+      <h1 class="name">Erfan Tarmohammadi</h1>
+      <p class="role">MSc in Data Science — <a href="https://www.sabanciuniv.edu/en" target="_blank" rel="noopener">Sabancı University</a> · BSc Industrial Engineering</p>
+
+      <p style="margin-top:16px;color:var(--muted)">Empirical finance & AI — I apply data-driven and NLP/LLM techniques to financial text and large-scale datasets. Currently researching information extraction and asset-pricing applications at <a href="https://vrllab.sabanciuniv.edu" target="_blank" rel="noopener">VRL Lab</a>.</p>
+
+      <div class="cta-bar">
+        <a class="btn" href="ERFAN_CV.pdf" target="_blank" rel="noopener">
+          Download CV
+        </a>
+        <a class="btn secondary" href="mailto:erfan.tarmohammadi@sabanciuniv.edu">Contact</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- RESEARCH -->
+  <section id="research" class="container">
+    <h2 class="section-title">Research Interests</h2>
+    <p class="section-sub">Empirical asset pricing, mergers & acquisitions, financial information extraction, and advanced NLP using large language models for finance.</p>
+
+    <div class="grid" style="margin-top:28px">
+      <div class="card">
+        <h3>Empirical Finance</h3>
+        <p>Data-driven research on asset-pricing and corporate events using modern econometric and ML methods.</p>
+      </div>
+      <div class="card">
+        <h3>Natural Language Processing</h3>
+        <p>Extraction and representation of financial information from reports, filings, and M&A documents.</p>
+      </div>
+      <div class="card">
+        <h3>LLMs & Information Extraction</h3>
+        <p>Prompting, fine-tuning, and structured-output extraction from large language models for research-ready data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section id="skills" class="container">
+    <h2 class="section-title">Strengths & Goals</h2>
+    <p class="section-sub">Combining quantitative rigor, programming, and domain knowledge to push AI applications in finance.</p>
+
+    <ul class="skills-list" aria-label="skills">
+      <li>Python • Pandas • PyTorch</li>
+      <li>Econometrics & Statistics</li>
+      <li>LLMs • NLP • Info Extraction</li>
+      <li>Research Design & Reproducibility</li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container">
     <h2 class="section-title">Contact</h2>
-    <p>Email: <a href="mailto:erfan.tarmohammadi@sabanciuniv.edu">erfan.tarmohammadi@sabanciuniv.edu</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/erfan-tarmohammadi" target="_blank">in/erfan-tarmohammadi</a></p>
-    <p>GitHub: <a href="https://github.com/erfanfut" target="_blank">github.com/erfanfut</a></p>
-</section>
+    <p class="section-sub">Feel free to reach out — open to collaborations and PhD opportunities.</p>
+
+    <div style="max-width:760px;margin:18px auto;text-align:center">
+      <p class="contact">Email: <a href="mailto:erfan.tarmohammadi@sabanciuniv.edu">erfan.tarmohammadi@sabanciuniv.edu</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/erfan-tarmohammadi" target="_blank" rel="noopener">in/erfan-tarmohammadi</a></p>
+      <p>GitHub: <a href="https://github.com/erfanfut" target="_blank" rel="noopener">github.com/erfanfut</a></p>
+    </div>
+  </section>
+</main>
 
 <footer>
-    © 2026 Erfan Tarmohammadi. All rights reserved.
+  <div class="container">
+    <small>© 2026 Erfan Tarmohammadi — Designed for clarity & legibility.</small>
+  </div>
 </footer>
 
 <script>
-function toggleTheme() {
-    document.body.classList.toggle('dark');
-    document.body.classList.toggle('light');
+/* Theme persistence + system preference */
+const root = document.body;
+const toggle = document.getElementById('themeToggle');
+
+function applyTheme(theme){
+  root.setAttribute('data-theme', theme);
+  // update accent variables in dark mode (optional)
 }
+function preferred(){
+  const stored = localStorage.getItem('site-theme');
+  if(stored) return stored;
+  // respect system preference
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+applyTheme(preferred());
+
+toggle.addEventListener('click', ()=>{
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  localStorage.setItem('site-theme', next);
+});
+
+/* small hover effect for profile */
+document.querySelector('.profile-photo').addEventListener('mouseover', e => e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)');
+document.querySelector('.profile-photo').addEventListener('mouseout', e => e.currentTarget.style.transform = 'none');
 </script>
 
 </body>
